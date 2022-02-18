@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './index.css'
+import { useState, useEffect } from 'react'
+import { supabase } from './config/supabaseClient'
+import Auth from './components/Auth'
+// import Recordatorios from "./components/Recordatorios";
+import Routes from './components/Routes/Routes'
 
-function App() {
+
+
+export default function Home() {
+  const [session, setSession] = useState(null)
+
+  useEffect(() => {
+    setSession(supabase.auth.session())
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className="container" style={{ padding: '50px 0 100px 0' }}>
+
+ 
+      {!session ? <Auth /> : <Routes key={session.user.id} session={session} /> } 
+    
+            {/* <Perfiles key={session.user.id} session={session} /> */}
+</div>
   );
 }
-
-export default App;
