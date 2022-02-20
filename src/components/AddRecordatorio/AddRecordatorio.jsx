@@ -4,8 +4,10 @@ import AppBar from '../../components/AppBar';
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export default function Recordatorios({ session }) {
-    const [loading, setLoading] = useState(true);
+
+
+export default function RecordatorioAdd({session}) {
+ const [loading, setLoading] = useState(true);
     const [titulo, setTitulo] = useState(null);
     const [fechacreacion, setFechaCreacion] = useState(null);
     const [contenido, setContenido] = useState(null);
@@ -46,12 +48,12 @@ export default function Recordatorios({ session }) {
         }
     }
 
-    async function EditarRecordatorio({ titulo, fechacreacion, contenido, fecharecordatorio  }) {
+    async function AgregarRecordatorio({ titulo, fechacreacion, contenido, fecharecordatorio  }) {
         try {
             setLoading(true);
             const user = supabase.auth.user();
 
-            const updates = {
+            const Agregar = {
                 id: user.id,
                 titulo, 
                 fechacreacion, 
@@ -60,7 +62,8 @@ export default function Recordatorios({ session }) {
                 updated_at: new Date(),
             };
 
-            let { error } = await supabase.from("recordatorio").upsert(updates, {
+                
+            let { error } = await supabase.from("perfil").insert(Agregar, {
                 returning: "minimal", // Don't return the value after inserting
             });
 
@@ -79,9 +82,11 @@ export default function Recordatorios({ session }) {
 
     return (
         
-        <div className="form-widget">
-         <AppBar/>
+        <div>
+         <AppBar/> 
+         <p>Bievenido</p>
 
+         
             <div>
                 <label htmlFor="email">Email</label>
                 <input
@@ -114,7 +119,7 @@ export default function Recordatorios({ session }) {
                 <input
                     id="contenido"
                     type="text"
-                    value={contenido || ""}
+                    value={contenido ||""}
                     onChange={(e) => setContenido(e.target.value)}
                 />
             </div>
@@ -133,16 +138,15 @@ export default function Recordatorios({ session }) {
                 <Button
                     className="button block primary"
                     onClick={() =>
-                        EditarRecordatorio({ titulo, fechacreacion, contenido, fecharecordatorio })
+                        AgregarRecordatorio({ titulo, fechacreacion, contenido, fecharecordatorio })
                     }
                     disabled={loading}
                 >
                     <Link to="/">
-                    {loading ? "Loading ..." : "Update"}
+                    {loading ? "Loading ..." : "Guardar"}
                     </Link>
                 </Button>
-            </div>                   
-            
+            </div>                 
         </div>
     );
 }

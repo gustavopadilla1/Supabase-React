@@ -26,19 +26,21 @@ const Navbar = () => {
 
                         </IconButton>
                         <Typography variant='h6' component="div" sx={{ flexGrow: 1 }}>
+                        <Link to="/">
                             HOME
+                        </Link>
                         </Typography>
 
                         <Button color="inherit" onClick={() => supabase.auth.signOut()}>
                         Salir
                     </Button>
                 
-                                <Button color="inherit" >
-                                <Link to="/">
+                                {/* <Button color="inherit" >
+                                <Link to="/Recordatorios">
                                 Recordatorios
                                 </Link>                                                                
-                                </Button>
-                                
+                                </Button> */}
+
                             <Button color="inherit" >
                                 <Link to="/Perfiles">
                                 Perfil
@@ -51,6 +53,14 @@ const Navbar = () => {
                         <Tooltip title="Open settings">
                             <IconButton sx={{ p: 0 }}>
                                 <Avatar alt="G" src="/static/images/avatar/2.jpg" />
+                                {/* <ImgPerfiles            
+                url={imgperfiles_url}
+                size={150}
+                onUpload={(url) => {
+                    setImgperfiles_url(url);
+                    updatePerfiles({  imgperfiles_url: url });
+                }}
+            /> */}
                             </IconButton>
                         </Tooltip>
 

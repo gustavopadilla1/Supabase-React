@@ -1,6 +1,10 @@
 .App {
   text-align: center;
 }
+.CARD{
+  padding-left: 50px ;
+  padding-right: 50px;
+}
 
 .App-logo {
   height: 40vmin;
@@ -36,3 +40,4 @@
     transform: rotate(360deg);
   }
 }
+
