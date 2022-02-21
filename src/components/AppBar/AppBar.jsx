@@ -31,6 +31,9 @@ const Navbar = () => {
                         </Link>
                         </Typography>
 
+                        <Button variant="inherit" >
+        <a style={{ textDecoration: "none", color: "white" }} href='https://github.com/gustavopadilla1/Supabase-React.git'> Git Hub </a>
+      </Button>
                         <Button color="inherit" onClick={() => supabase.auth.signOut()}>
                         Salir
                     </Button>

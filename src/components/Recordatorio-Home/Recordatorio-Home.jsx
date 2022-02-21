@@ -103,7 +103,9 @@ export default function RecordatorioHome({session}) {
         
         <div>
          <AppBar/> 
+        
          <p>Bievenidos</p>
+         
 
          <Button variant="contained">
         < Link to="/AddRecordatorio">
