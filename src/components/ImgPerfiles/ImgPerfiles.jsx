@@ -56,7 +56,7 @@ export default function Avatar({ url, size, onUpload }) {
     <div>
       {imgperfiles_url ? (
         <img
-          src={imgperfiles_url}
+          src={imgperfiles_url ?? "https://www.emsevilla.es/wp-content/uploads/2020/10/no-image-1.png"}
           alt="imgperfiles_url"
           className="avatar image"
           style={{ height: size, width: size }}

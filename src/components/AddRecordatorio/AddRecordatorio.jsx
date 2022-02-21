@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 
 
 export default function RecordatorioAdd({session}) {
- const [loading, setLoading] = useState(true);
+    // const [id, setid] = useState(null);
+    const [loading, setLoading] = useState(true);
     const [titulo, setTitulo] = useState(null);
     const [fechacreacion, setFechaCreacion] = useState(null);
     const [contenido, setContenido] = useState(null);
@@ -34,6 +35,7 @@ export default function RecordatorioAdd({session}) {
             }
 
             if (data) {
+                // setid(data.id);
                 setTitulo(data.titulo);
                 setFechaCreacion(data.fechacreacion);
                 setContenido(data.contenido);
@@ -54,7 +56,7 @@ export default function RecordatorioAdd({session}) {
             const user = supabase.auth.user();
 
             const Agregar = {
-                id: user.id,
+                id:user.id,
                 titulo, 
                 fechacreacion, 
                 contenido, 
@@ -63,7 +65,7 @@ export default function RecordatorioAdd({session}) {
             };
 
                 
-            let { error } = await supabase.from("perfil").insert(Agregar, {
+            let { error } = await supabase.from("recordatorio").upsert(Agregar,  {
                 returning: "minimal", // Don't return the value after inserting
             });
 
@@ -137,6 +139,7 @@ export default function RecordatorioAdd({session}) {
             <div>
                 <Button
                     className="button block primary"
+                    // value={id || ""}
                     onClick={() =>
                         AgregarRecordatorio({ titulo, fechacreacion, contenido, fecharecordatorio })
                     }

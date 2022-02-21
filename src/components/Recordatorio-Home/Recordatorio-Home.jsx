@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom';
 export default function RecordatorioHome({session}) {
     const [,setLoading] = useState(true);
     const [titulo, setTitulo] = useState(null);
+
+    // const [id, setid] = useState(null);
     const [fechacreacion, setFechaCreacion] = useState(null);
     const [contenido, setContenido] = useState(null);
     const [fecharecordatorio, setFechaRecordatorio] = useState(null);
@@ -27,7 +29,7 @@ export default function RecordatorioHome({session}) {
 
             let { data, error, status } = await supabase
                 .from("recordatorio")
-                .select(`titulo, fechacreacion, contenido, fecharecordatorio `)
+                .select(`id,titulo, fechacreacion, contenido, fecharecordatorio `)
                 .eq("id", user.id)
                 .single();
 
@@ -36,6 +38,8 @@ export default function RecordatorioHome({session}) {
             }
 
             if (data) {
+                // setid(data.id);
+                
                 setTitulo(data.titulo);
                 setFechaCreacion(data.fechacreacion);
                 setContenido(data.contenido);
@@ -50,6 +54,51 @@ export default function RecordatorioHome({session}) {
             setLoading(false);
         }
     }
+//     const listItem = (item)=>{
+//         return <div key={item.id}>
+//         <span>{item.name}</span> <button onClick={this.delete.bind(this, item)}>Delete</button>
+//       </div>
+//     }  
+//   }
+//     async function EliminarRecordatorio({ item  }) {
+//         try {
+//             setLoading(true);
+//             const user = supabase.auth.user();
+//             const data = data.filter(i => i.id !== itemid)
+//             this.setState({item})
+//             // let { data, error, status } = await supabase
+//             //     .from("recordatorio")
+//             //     .select(`titulo, fechacreacion, contenido, fecharecordatorio `)
+//             //     .eq("id", user.id)
+//             //     .single();
+
+            
+            
+//             // const updates = {
+            
+//             //     titulo,  
+//             //     fechacreacion, 
+//             //     contenido, 
+//             //     fecharecordatorio,
+//             //     updated_at: new Date(),
+//             // };
+
+//             // let { error } = await supabase.from("recordatorio").delete(updates,user.id, {
+//             //     returning: "minimal", // Don't return the value after inserting
+//             // }) ;
+
+//             if (error) {
+//                 throw error;
+//             }
+//         } catch (error) {
+//             console.log(error);
+//             alert(error.message);
+//         } finally {
+//             setLoading(false);
+//         }
+//     }
+
+
     return (
         
         <div>
@@ -66,14 +115,20 @@ export default function RecordatorioHome({session}) {
         <Grid container padding={10} spacing={7} className="CARD">
         <Grid item xs={12} sm={6} md={4} >
             <Card
+            // id={id}
             titulo={titulo}                                 
              contenido={contenido}
               fechacreacion={fechacreacion}
-              fecharecordatorio={fecharecordatorio}
-            />  
+              fecharecordatorio={fecharecordatorio}              
+                        >       
+            </Card>
+            {/* <Button variant="contained" size="small" color="error"
+            onClick={}
 
-                <br></br>
-            <Card/>
+            >
+            Borrar
+          </Button>  */}
+                <br></br>            
             </Grid>
     </Grid>
         </div>
