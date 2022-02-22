@@ -3,6 +3,8 @@ import { supabase } from "../../config/supabaseClient";
 import AppBar from '../../components/AppBar';
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+// import { useTranslation } from "react-i18next";
+
 
 
 
@@ -14,6 +16,15 @@ export default function RecordatorioAdd({session}) {
     const [contenido, setContenido] = useState(null);
     const [fecharecordatorio, setFechaRecordatorio] = useState(null);
     
+    // useEffect(() => {
+    //     changeLaguage();
+    // },);    
+    //   const { i18n, t } = useTranslation();
+      
+    //   const changeLaguage = (language) => {
+    //     i18n.changeLanguage(language);
+    //   };
+
 
     useEffect(() => {
         getRecordatorios();

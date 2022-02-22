@@ -52,6 +52,7 @@ export default function Rotas({ session }) {
                 setFechanacimiento(data.fechanacimiento);
                 setImgperfiles_url(data.imgperfiles_url);
             }
+            
         } catch (error) {
             console.log(error);
             alert(error.message);
