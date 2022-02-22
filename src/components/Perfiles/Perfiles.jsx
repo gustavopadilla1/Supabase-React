@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "../../config/supabaseClient";
 import ImgPerfiles from "../ImgPerfiles";
 import AppBar from '../../components/AppBar';
+import { useTranslation } from "react-i18next";
 
 
 
@@ -17,6 +18,16 @@ export default function Perfiles({ session }) {
     useEffect(() => {
         getPerfiles();
     }, [session]);
+
+    useEffect(() => {
+        changeLaguage();
+    },);    
+      const { i18n, t } = useTranslation();
+      
+      const changeLaguage = (language) => {
+        i18n.changeLanguage(language);
+      };
+
 
     async function getPerfiles() {
         try {
@@ -94,7 +105,9 @@ export default function Perfiles({ session }) {
                 }}
             />
             <div>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">
+                {t("Email")}
+                </label>
                 <input
                     id="email"
                     type="text"
@@ -103,7 +116,9 @@ export default function Perfiles({ session }) {
                 />
             </div>
             <div>
-                <label htmlFor="username">Nombre</label>
+                <label htmlFor="username">
+                {t("Name")}
+                </label>
                 <input
                     id="username"
                     type="text"
@@ -112,7 +127,9 @@ export default function Perfiles({ session }) {
                 />
             </div>
             <div>
-                <label htmlFor="direccion">Direccion</label>
+                <label htmlFor="direccion">
+                {t("address")}
+                </label>
                 <input
                     id="direccion"
                     type="text"
@@ -121,7 +138,9 @@ export default function Perfiles({ session }) {
                 />
             </div>
             <div>
-                <label htmlFor="telefono">Telefono</label>
+                <label htmlFor="telefono">
+                {t("Phone")}
+                </label>
                 <input
                     id="telefono"
                     type="Number"
@@ -130,7 +149,9 @@ export default function Perfiles({ session }) {
                 />
             </div>
             <div>
-                <label htmlFor="ocupacion">Ocupacion</label>
+                <label htmlFor="ocupacion">
+                {t("Occupation")}
+                </label>
                 <input
                     id="ocupacion"
                     type="text"
@@ -139,7 +160,9 @@ export default function Perfiles({ session }) {
                 />
             </div>
             <div>
-                <label htmlFor="fechanacimiento">Fecha Nacimiento</label>
+                <label htmlFor="fechanacimiento">
+                {t("Birth date")}
+                </label>
                 <input
                     id="fechanacimiento"
                     type="text"

@@ -102,27 +102,31 @@ export default function RecordatorioHome({session}) {
         <div>
          <AppBar/> 
         
-         <p>{t("welcome")}</p>
+         <h4>{t("welcome")}</h4>
+         <h4>{t("Change language")}</h4>
          
-         <div >
-          <p
+         
+             
+         <Button variant="contained" color='success' 
             className={`App-link ${
               i18n.language === "es" ? "selected" : "unselected"
             }`}
             onClick={() => changeLaguage("es")}
           >
-            MX
-          </p>
-          <p
+            {t("Spanish")}
+          </Button>
+        
+          <Button variant="contained" color='error'
             className={`App-link ${
               i18n.language === "en" ? "selected" : "unselected"
             }`}
             onClick={() => changeLaguage("en")}
           >
-            US
-          </p>
-        </div>
-
+            {t("English")}
+           
+            </Button> 
+            <br></br><br></br>
+        
          <Button variant="contained">
         < Link to="/AddRecordatorio">
         {t("New Reminder")}

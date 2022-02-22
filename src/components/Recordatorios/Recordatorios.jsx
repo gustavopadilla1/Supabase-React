@@ -3,6 +3,7 @@ import { supabase } from "../../config/supabaseClient";
 import AppBar from '../../components/AppBar';
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function Recordatorios({ session }) {
     const [loading, setLoading] = useState(true);
@@ -15,6 +16,15 @@ export default function Recordatorios({ session }) {
     useEffect(() => {
         getRecordatorios();
     }, [session]);
+
+    useEffect(() => {
+        changeLaguage();
+    },);    
+      const { i18n, t } = useTranslation();
+      
+      const changeLaguage = (language) => {
+        i18n.changeLanguage(language);
+      };
 
     async function getRecordatorios() {
         try {
@@ -83,7 +93,9 @@ export default function Recordatorios({ session }) {
          <AppBar/>
 
             <div>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">                
+                {t("Email")}
+                </label>
                 <input
                     id="email"
                     type="text"
@@ -92,7 +104,7 @@ export default function Recordatorios({ session }) {
                 />
             </div>
             <div>
-                <label htmlFor="titulo">Titulo</label>
+                <label htmlFor="titulo">{t("Title")}</label>
                 <input
                     id="titulo"
                     type="text"
@@ -101,7 +113,7 @@ export default function Recordatorios({ session }) {
                 />
             </div>
             <div>
-                <label htmlFor="fechacreacion">Fecha Creacion</label>
+                <label htmlFor="fechacreacion">{t("Creation date")}</label>
                 <input
                     id="fechacreacion"
                     type="Date"
@@ -110,7 +122,7 @@ export default function Recordatorios({ session }) {
                 />
             </div>
             <div>
-                <label htmlFor="contenido">Contenido</label>
+                <label htmlFor="contenido">{t("Contents")}</label>
                 <input
                     id="contenido"
                     type="text"
@@ -119,7 +131,7 @@ export default function Recordatorios({ session }) {
                 />
             </div>
             <div>
-                <label htmlFor="fecharecordatorio">Fecha Recordatorio</label>
+                <label htmlFor="fecharecordatorio">{t("Reminder date")}</label>
                 <input
                     id="fecharecordatorio"
                     type="Date"
