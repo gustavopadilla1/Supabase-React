@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "../../config/supabaseClient";
 import ImgPerfiles from "../ImgPerfiles";
 import AppBar from '../../components/AppBar';
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 
 
 
@@ -19,14 +19,14 @@ export default function Perfiles({ session }) {
         getPerfiles();
     }, [session]);
 
-    useEffect(() => {
-        changeLaguage();
-    },);    
-      const { i18n, t } = useTranslation();
+    // useEffect(() => {
+    //     changeLaguage();
+    // },);    
+    //   const { i18n, t } = useTranslation();
       
-      const changeLaguage = (language) => {
-        i18n.changeLanguage(language);
-      };
+    //   const changeLaguage = (language) => {
+    //     i18n.changeLanguage(language);
+    //   };
 
 
     async function getPerfiles() {
@@ -106,7 +106,8 @@ export default function Perfiles({ session }) {
             />
             <div>
                 <label htmlFor="email">
-                {t("Email")}
+                {/* {t("Email")} */}
+                Correo Electronico
                 </label>
                 <input
                     id="email"
@@ -117,7 +118,8 @@ export default function Perfiles({ session }) {
             </div>
             <div>
                 <label htmlFor="username">
-                {t("Name")}
+                {/* {t("Name")} */}
+                Nombre
                 </label>
                 <input
                     id="username"
@@ -128,7 +130,8 @@ export default function Perfiles({ session }) {
             </div>
             <div>
                 <label htmlFor="direccion">
-                {t("address")}
+                {/* {t("address")} */}
+                Direccion
                 </label>
                 <input
                     id="direccion"
@@ -139,7 +142,8 @@ export default function Perfiles({ session }) {
             </div>
             <div>
                 <label htmlFor="telefono">
-                {t("Phone")}
+                {/* {t("Phone")} */}
+                Telefono
                 </label>
                 <input
                     id="telefono"
@@ -150,7 +154,8 @@ export default function Perfiles({ session }) {
             </div>
             <div>
                 <label htmlFor="ocupacion">
-                {t("Occupation")}
+                {/* {t("Occupation")} */}
+                Ocupacion
                 </label>
                 <input
                     id="ocupacion"
@@ -161,7 +166,8 @@ export default function Perfiles({ session }) {
             </div>
             <div>
                 <label htmlFor="fechanacimiento">
-                {t("Birth date")}
+                {/* {t("Birth date")} */}
+                Fecha de Nacimiento
                 </label>
                 <input
                     id="fechanacimiento"
