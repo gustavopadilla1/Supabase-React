@@ -1,1 +1,1 @@
-export {default} from "./ImgPerfiles"
+export {default} from "./ImgPerfiles"  

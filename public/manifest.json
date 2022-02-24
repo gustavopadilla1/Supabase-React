@@ -1,6 +1,6 @@
 {
-  "short_name": "Clima React",
-  "name": "Clima React",
+  "short_name": "React-Supabase-181351",
+  "name": "React-Supabase-181351",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,10 +8,10 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo128.png",
+      "src": "logo192.png",
       "type": "image/png",
-      "sizes": "128x128"
-    },
+      "sizes": "192x192"
+    }, 
     {
       "src": "logo512.png",
       "type": "image/png",

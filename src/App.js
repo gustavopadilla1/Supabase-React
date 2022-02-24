@@ -2,6 +2,7 @@ import './index.css'
 import { useState, useEffect } from 'react'
 import { supabase } from './config/supabaseClient'
 import Auth from './components/Auth'
+// import Recordatorios from "./components/Recordatorios";
 import Routes from './components/Routes/Routes'
 
 
@@ -9,13 +10,13 @@ import Routes from './components/Routes/Routes'
 export default function Home() {
   const [session, setSession] = useState(null)
 
-  useEffect(() => {
+  useEffect(() => { 
     setSession(supabase.auth.session())
 
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
     })
-  }, [])
+  }, []) 
 
   return (
     <div className="container" style={{ padding: '50px 0 100px 0' }}>
@@ -23,6 +24,7 @@ export default function Home() {
  
       {!session ? <Auth /> : <Routes key={session.user.id} session={session} /> } 
     
+            {/* <Perfiles key={session.user.id} session={session} /> */}
 </div>
   );
 }

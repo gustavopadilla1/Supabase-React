@@ -5,7 +5,7 @@
 // for the list of available Workbox modules, or add any other
 // code you'd like.
 // You can also remove this file if you'd prefer not to use a
-// service worker, and the Workbox build step will be skipped.
+// service worker, and the Workbox build step will be skipped. 
 
 import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
