@@ -7,18 +7,13 @@ import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter } from "react-router-dom";
 
-// import {initReactIl8next} from 'react-il8next';
-import{I18nextProvider} from 'react-i18next'
-import i18n from "../src/config/localization/i18n";
 
  
 ReactDOM.render(
   <React.StrictMode>
-  <I18nextProvider i18n={i18n}>
   <BrowserRouter>
  <App />
- </BrowserRouter>
-  </I18nextProvider>
+ </BrowserRouter>  
 </React.StrictMode>,
 document.getElementById('root')
 );

@@ -1,8 +1,5 @@
 import { useState } from 'react'
 import { supabase } from '../../config/supabaseClient'
-import { Button } from '@mui/material'
-import { useTranslation } from "react-i18next";
-
 
 export default function Auth() {
   const [loading, setLoading] = useState(false)
@@ -22,45 +19,23 @@ export default function Auth() {
   }
 
    
-  const { i18n, t } = useTranslation();
-  
-  const changeLaguage = (language) => {
-    i18n.changeLanguage(language);
-  };
+
 
   return (
-    <div>
-      <h4>{t("Change language")}</h4>
-           <Button variant="contained" color='success' 
-            className={`App-link ${
-              i18n.language === "es" ? "selected" : "unselected"
-            }`}
-            onClick={() => changeLaguage("es")}
-          >
-            {t("Spanish")}
-          </Button>
-        
-          <Button variant="contained" color='error'
-            className={`App-link ${
-              i18n.language === "en" ? "selected" : "unselected"
-            }`}
-            onClick={() => changeLaguage("en")}
-          >
-            {t("English")}
-           
-            </Button> 
+    
+     
     
     <div className="row flex flex-center">
       <div className="col-6 form-widget">
-        <h1 className="header" >{t("Log in")}</h1>
+        <h1 className="header" >Iniciar Secion</h1>
         <p className="description">
-        {t("log in via the magic link with your email below")}        
+        inicie sesión a través del enlace mágico con su correo electrónico a continuación      
         </p>
         <div>
           <input
             className="inputField"
             type="email"
-            placeholder={t("enter your email")}
+            placeholder="Ingresa tu correo Electronico"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -74,11 +49,10 @@ export default function Auth() {
             className={'button block'}
             disabled={loading}
           >
-            {loading ? <span>Cargando</span> : <span>{t("Send access link")}</span>}
+            {loading ? <span>Cargando</span> : <span>Enviar enlace de acceso</span>}
           </button>
         </div>
       </div>
-    </div>
     </div>
   )
 }

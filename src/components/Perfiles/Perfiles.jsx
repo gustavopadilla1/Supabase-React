@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { supabase } from "../../config/supabaseClient";
 import ImgPerfiles from "../ImgPerfiles";
 import AppBar from '../../components/AppBar';
-// import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+
 
 
 
@@ -18,16 +19,6 @@ export default function Perfiles({ session }) {
     useEffect(() => {
         getPerfiles();
     }, [session]);
-
-    // useEffect(() => {
-    //     changeLaguage();
-    // },);    
-    //   const { i18n, t } = useTranslation();
-      
-    //   const changeLaguage = (language) => {
-    //     i18n.changeLanguage(language);
-    //   };
-
 
     async function getPerfiles() {
         try {
@@ -105,8 +96,7 @@ export default function Perfiles({ session }) {
                 }}
             />
             <div>
-                <label htmlFor="email">
-                {/* {t("Email")} */}
+                <label htmlFor="email">                
                 Correo Electronico
                 </label>
                 <input
@@ -118,7 +108,6 @@ export default function Perfiles({ session }) {
             </div>
             <div>
                 <label htmlFor="username">
-                {/* {t("Name")} */}
                 Nombre
                 </label>
                 <input
@@ -129,8 +118,7 @@ export default function Perfiles({ session }) {
                 />
             </div>
             <div>
-                <label htmlFor="direccion">
-                {/* {t("address")} */}
+                <label htmlFor="direccion">                
                 Direccion
                 </label>
                 <input
@@ -141,8 +129,7 @@ export default function Perfiles({ session }) {
                 />
             </div>
             <div>
-                <label htmlFor="telefono">
-                {/* {t("Phone")} */}
+                <label htmlFor="telefono">                
                 Telefono
                 </label>
                 <input
@@ -153,8 +140,7 @@ export default function Perfiles({ session }) {
                 />
             </div>
             <div>
-                <label htmlFor="ocupacion">
-                {/* {t("Occupation")} */}
+                <label htmlFor="ocupacion">                
                 Ocupacion
                 </label>
                 <input
@@ -165,8 +151,7 @@ export default function Perfiles({ session }) {
                 />
             </div>
             <div>
-                <label htmlFor="fechanacimiento">
-                {/* {t("Birth date")} */}
+                <label htmlFor="fechanacimiento">                
                 Fecha de Nacimiento
                 </label>
                 <input
@@ -178,14 +163,15 @@ export default function Perfiles({ session }) {
             </div>
 
             <div>
-                <button
+                <button                
                     className="button block primary"
                     onClick={() =>
                         updatePerfiles({ username, direccion, telefono, ocupacion, fechanacimiento, imgperfiles_url })
                     }
                     disabled={loading}
-                >
+                > <Link to="/" >
                     {loading ? "Loading ..." : "Update"}
+                    </Link>
                 </button>
             </div>
         

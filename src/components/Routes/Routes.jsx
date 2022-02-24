@@ -3,9 +3,7 @@ import { supabase } from "../../config/supabaseClient";
 import AppBar from '../../components/AppBar';
  import { Routes , Route } from "react-router-dom";
 import Perfiles from "../Perfiles";
-import Recordatorios from "../Recordatorios";
-import RecordatorioHome from "../Recordatorio-Home";
-import AddRecordatorio from "../AddRecordatorio";
+import Home from "../Home";
 
 
 
@@ -17,18 +15,11 @@ export default function Rotas({ session }) {
     const [, setOcupacion] = useState(null);
     const [, setFechanacimiento] = useState(null);
     const [, setImgperfiles_url] = useState(null);
-    const [, setTitulo] = useState(null);
-    const [, setFechaCreacion] = useState(null);
-    const [, setContenido] = useState(null);
-    const [, setFechaRecordatorio] = useState(null);
-
+    
     useEffect(() => {
         getPerfiles();
     }, [session]);
-    useEffect(() => {
-        getRecordatorios();
-    }, [session]);
-
+    
     async function getPerfiles() {
         try {
             setLoading(true);
@@ -60,35 +51,7 @@ export default function Rotas({ session }) {
             setLoading(false);
         }
     }
-    async function getRecordatorios() {
-        try {
-            setLoading(true);
-            const user = supabase.auth.user();
-
-            let { data, error, status } = await supabase
-                .from("recordatorio")
-                .select(`titulo, fechacreacion, contenido, fecharecordatorio `)
-                .eq("id", user.id)
-                .single();
-
-            if (error && status !== 406) {
-                throw error;
-            }
-
-            if (data) {
-                setTitulo(data.titulo);
-                setFechaCreacion(data.fechacreacion);
-                setContenido(data.contenido);
-                setFechaRecordatorio(data.fecharecordatorio);
-               console.log(data);
-            }
-        } catch (error) {
-            console.log(error);
-            alert(error.message);
-        } finally {
-            setLoading(false);
-        }
-    }
+   
    
 
     return (
@@ -98,10 +61,8 @@ export default function Rotas({ session }) {
 
            
             <Routes>
-                        <Route path='/Perfiles' element={<Perfiles key={session.user.id} session={session}  />}/>
-                        <Route path='/Recordatorios' element={<Recordatorios key={session.user.id} session={session}  />}/>
-                        <Route path='/AddRecordatorio' element={<AddRecordatorio key={session.user.id} session={session}/>}/>
-                        <Route path='/' element={<RecordatorioHome key={session.user.id} session={session}/>}/>
+                        <Route path='/Perfiles' element={<Perfiles key={session.user.id} session={session}  />}/>                        
+                        <Route path='/' element={<Home key={session.user.id} session={session}/>}/>
             </Routes>
 
         </div>

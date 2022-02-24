@@ -1,5 +1,5 @@
 {
-  "name": "supabase-react",
+  "name": "api_clima-supabase-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
