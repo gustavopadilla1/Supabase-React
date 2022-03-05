@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 
 
 export default function RecordatorioAdd({session}) {
-    // const [id, setid] = useState(null);
     const [loading, setLoading] = useState(true);
     const [titulo, setTitulo] = useState(null);
     const [fechacreacion, setFechaCreacion] = useState(null);
@@ -37,8 +36,8 @@ export default function RecordatorioAdd({session}) {
 
             let { data, error, status } = await supabase
                 .from("recordatorio")
-                .select(`titulo, fechacreacion, contenido, fecharecordatorio `)
-                .eq("id", user.id)
+                .select(`id, id_rec,titulo, fechacreacion, contenido, fecharecordatorio `)
+                .eq("id_rec", user.id)
                 .single();
 
             if (error && status !== 406) {
@@ -46,7 +45,7 @@ export default function RecordatorioAdd({session}) {
             }
 
             if (data) {
-                // setid(data.id);
+             
                 setTitulo(data.titulo);
                 setFechaCreacion(data.fechacreacion);
                 setContenido(data.contenido);
@@ -66,17 +65,18 @@ export default function RecordatorioAdd({session}) {
             setLoading(true);  
             const user = supabase.auth.user();
 
-            const Agregar = {
-                id:user.id,
+            const Agregar = { 
+
                 titulo, 
                 fechacreacion, 
                 contenido,  
                 fecharecordatorio,
-                updated_at: new Date(),
+                updated_at: new Date(),                
+                id_rec:user.id
             };
 
                 
-            let { error } = await supabase.from("recordatorio").upsert(Agregar,  {
+            let { error } = await supabase.from("recordatorio").insert(Agregar,  {
                 returning: "minimal", // Don't return the value after inserting
             });
 
@@ -87,6 +87,7 @@ export default function RecordatorioAdd({session}) {
             console.log(error);
             alert(error.message);
         } finally {
+            getRecordatorios();
             setLoading(false);
         }
     }

@@ -33,14 +33,13 @@ export default function Recordatorios({ session }) {
 
             let { data, error, status } = await supabase
                 .from("recordatorio")
-                .select(`titulo, fechacreacion, contenido, fecharecordatorio `)
+                .select(`id_rec, id, titulo, fechacreacion, contenido, fecharecordatorio `)
                 .eq("id", user.id)
                 .single();
 
             if (error && status !== 406) {
                 throw error;
             }
-
             if (data) {
                 setTitulo(data.titulo);
                 setFechaCreacion(data.fechacreacion);
@@ -62,7 +61,7 @@ export default function Recordatorios({ session }) {
             const user = supabase.auth.user();
 
             const updates = {
-                id: user.id,
+                id: user.id,            
                 titulo, 
                 fechacreacion, 
                 contenido, 

@@ -37,9 +37,9 @@ export default function RecordatorioHome({session}) {
 
             let { data, error, status } = await supabase
                 .from("recordatorio")
-                .select(`id,titulo, fechacreacion, contenido, fecharecordatorio `)
+                .select(`*`)
                 .eq("id", user.id)
-                .single();
+                .single(); 
 
             if (error && status !== 406) {
                 throw error;

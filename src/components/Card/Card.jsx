@@ -38,7 +38,7 @@ export default function MultiActionAreaCard({ id, titulo, fechacreacion, conteni
               {titulo} 
               </Typography>
           </Typography>
-          
+           
           <Typography gutterBottom variant="body2" component="div" color="blue">
           {t("Contents")}
             <Typography variant="body2" color="Black">
